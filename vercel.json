@@ -4,7 +4,7 @@
   "outputDirectory": "client/dist",
   "framework": "vite",
   "functions": {
-    "server/api/index.ts": {
+    "api/**/*.ts": {
       "memory": 1024,
       "maxDuration": 10
     }
@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/api/index.ts"
+      "dest": "/api/$1"
     },
     {
       "src": "/(.*)",
