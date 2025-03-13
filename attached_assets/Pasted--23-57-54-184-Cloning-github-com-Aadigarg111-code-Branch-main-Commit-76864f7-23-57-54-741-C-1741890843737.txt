@@ -1,0 +1,34 @@
+[23:57:54.184] Cloning github.com/Aadigarg111/code (Branch: main, Commit: 76864f7)
+[23:57:54.741] Cloning completed: 557.000ms
+[23:57:55.409] Restored build cache from previous deployment (2CDZyFGkobQFNrwGFb9HywLLd7by)
+[23:57:55.495] Running build in Washington, D.C., USA (East) – iad1
+[23:57:56.034] Running "vercel build"
+[23:57:56.413] Vercel CLI 41.3.2
+[23:57:57.205] Installing dependencies...
+[23:57:59.228] 
+[23:57:59.229] up to date in 2s
+[23:57:59.229] 
+[23:57:59.229] 87 packages are looking for funding
+[23:57:59.229]   run `npm fund` for details
+[23:57:59.402] 
+[23:57:59.402] > codestake-client@1.0.0 build
+[23:57:59.403] > tsc && vite build
+[23:57:59.403] 
+[23:58:09.106] src/components/header.tsx(34,32): error TS2322: Type 'string | null' is not assignable to type 'string | undefined'.
+[23:58:09.107]   Type 'null' is not assignable to type 'string | undefined'.
+[23:58:09.108] src/components/user-level-card.tsx(15,20): error TS18047: 'stats.totalXp' is possibly 'null'.
+[23:58:09.108] src/components/user-level-card.tsx(19,31): error TS18047: 'stats.totalXp' is possibly 'null'.
+[23:58:09.108] src/components/user-level-card.tsx(23,9): error TS18047: 'stats.totalXp' is possibly 'null'.
+[23:58:09.108] src/components/user-level-card.tsx(48,37): error TS18047: 'stats.totalXp' is possibly 'null'.
+[23:58:09.108] src/components/user-level-card.tsx(79,45): error TS18047: 'stats.totalEarned' is possibly 'null'.
+[23:58:09.108] src/components/user-level-card.tsx(86,12): error TS18047: 'stats.badges' is possibly 'null'.
+[23:58:09.108] src/components/user-level-card.tsx(93,18): error TS18047: 'stats.badges' is possibly 'null'.
+[23:58:09.108] ../server/api/index.ts(10,16): error TS2345: Argument of type 'Router' is not assignable to parameter of type 'Express'.
+[23:58:09.109]   Type 'IRouter' is missing the following properties from type 'Express': request, response, init, defaultConfiguration, and 32 more.
+[23:58:09.109] ../server/routes.ts(31,11): error TS2353: Object literal may only specify known properties, and 'githubAccessToken' does not exist in type '{ username: string; githubId?: string | null | undefined; githubUsername?: string | null | undefined; walletAddress?: string | null | undefined; avatarUrl?: string | null | undefined; }'.
+[23:58:09.109] ../server/routes.ts(35,11): error TS2339: Property 'session' does not exist on type 'Request<{}, any, any, ParsedQs, Record<string, any>>'.
+[23:58:09.109] ../server/vite.ts(42,5): error TS2322: Type '{ middlewareMode: boolean; hmr: { server: Server<typeof IncomingMessage, typeof ServerResponse>; }; allowedHosts: boolean; }' is not assignable to type 'ServerOptions'.
+[23:58:09.109]   Types of property 'allowedHosts' are incompatible.
+[23:58:09.109]     Type 'boolean' is not assignable to type 'true | string[] | undefined'.
+[23:58:09.143] Error: Command "cd client && npm run build" exited with 2
+[23:58:09.429] 

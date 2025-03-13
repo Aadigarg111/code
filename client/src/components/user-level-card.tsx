@@ -11,16 +11,18 @@ interface UserLevelCardProps {
 
 export function UserLevelCard({ stats }: UserLevelCardProps) {
   // Calculate XP progress to next level
+  const totalXp = stats.totalXp ?? 0;
+
   const currentRank = Object.entries(RANKS).find(
-    ([_, data]) => stats.totalXp >= data.min
+    ([_, data]) => totalXp >= data.min
   )?.[1] || RANKS.NOVICE;
 
   const nextRank = Object.entries(RANKS).find(
-    ([_, data]) => data.min > stats.totalXp
+    ([_, data]) => data.min > totalXp
   )?.[1];
 
   const progress = nextRank 
-    ? ((stats.totalXp - currentRank.min) / (nextRank.min - currentRank.min)) * 100
+    ? ((totalXp - currentRank.min) / (nextRank.min - currentRank.min)) * 100
     : 100;
 
   return (
@@ -28,10 +30,10 @@ export function UserLevelCard({ stats }: UserLevelCardProps) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Trophy className="h-5 w-5 text-primary" />
-          Level {stats.level} {stats.title}
+          Level {stats.level ?? 1} {stats.title ?? "Rookie"}
         </CardTitle>
         <CardDescription>
-          {stats.rank} • {stats.totalXp} XP
+          {stats.rank ?? "Novice"} • {totalXp} XP
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -45,7 +47,7 @@ export function UserLevelCard({ stats }: UserLevelCardProps) {
             <Progress value={progress} className="h-2" />
             <p className="text-sm text-muted-foreground">
               {nextRank 
-                ? `${nextRank.min - stats.totalXp} XP needed for next rank`
+                ? `${nextRank.min - totalXp} XP needed for next rank`
                 : "Maximum rank achieved!"}
             </p>
           </div>
@@ -55,35 +57,35 @@ export function UserLevelCard({ stats }: UserLevelCardProps) {
             <div className="flex gap-2 items-center">
               <Star className="h-4 w-4 text-yellow-500" />
               <div>
-                <p className="font-medium">{stats.streak} Days</p>
+                <p className="font-medium">{stats.streak ?? 0} Days</p>
                 <p className="text-muted-foreground">Current Streak</p>
               </div>
             </div>
             <div className="flex gap-2 items-center">
               <Medal className="h-4 w-4 text-orange-500" />
               <div>
-                <p className="font-medium">{stats.longestStreak} Days</p>
+                <p className="font-medium">{stats.longestStreak ?? 0} Days</p>
                 <p className="text-muted-foreground">Longest Streak</p>
               </div>
             </div>
             <div className="flex gap-2 items-center">
               <Trophy className="h-4 w-4 text-purple-500" />
               <div>
-                <p className="font-medium">{stats.challengesCompleted}</p>
+                <p className="font-medium">{stats.challengesCompleted ?? 0}</p>
                 <p className="text-muted-foreground">Challenges</p>
               </div>
             </div>
             <div className="flex gap-2 items-center">
               <Zap className="h-4 w-4 text-blue-500" />
               <div>
-                <p className="font-medium">{stats.totalEarned / 1e18} ETH</p>
+                <p className="font-medium">{(stats.totalEarned ?? 0) / 1e18} ETH</p>
                 <p className="text-muted-foreground">Total Earned</p>
               </div>
             </div>
           </div>
 
           {/* Badges */}
-          {stats.badges.length > 0 && (
+          {stats.badges && stats.badges.length > 0 && (
             <div className="space-y-2">
               <h4 className="text-sm font-medium flex items-center gap-2">
                 <Award className="h-4 w-4" />

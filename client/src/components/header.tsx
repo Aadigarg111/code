@@ -31,8 +31,8 @@ export default function Header() {
             <div className="flex items-center space-x-4">
               <Link href="/profile">
                 <Avatar>
-                  <AvatarImage src={user.avatarUrl} />
-                  <AvatarFallback>{user.username[0]}</AvatarFallback>
+                  <AvatarImage src={user.avatarUrl || undefined} />
+                  <AvatarFallback>{user.username?.[0]}</AvatarFallback>
                 </Avatar>
               </Link>
             </div>

@@ -1,15 +1,13 @@
 import express from "express";
-import { registerRoutes } from "../routes";
+import { z } from "zod";
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-// Initialize routes
-const router = express.Router();
-registerRoutes(router);
+// API routes
+app.get("/api/health", (_req, res) => {
+  res.json({ status: "ok" });
+});
 
-// Add API routes to app
-app.use('/api', router);
-
+// Export the Express API
 export default app;
